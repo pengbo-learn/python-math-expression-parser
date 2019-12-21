@@ -2,7 +2,7 @@
 
 A simple math expression parser written in python.
 
-## features
+## Features
 
 - Support basic operations: Plus(+), Minus(-), Multiply(\*), Divide(/), Power(\*\*)
 
@@ -16,7 +16,7 @@ A simple math expression parser written in python.
 
 - Support Set expression: {a, f(pi), e}
 
-## implementation
+## Implementation
 
 - The parser is LL(1).
 - The code is mainly based on [Let's Build A Simple Interpreter](https://github.com/rspivak/lsbasi/blob/master/part17/spi.py).
@@ -24,8 +24,45 @@ A simple math expression parser written in python.
 - The grammar is mainly based on [Python's grammar](https://docs.python.org/3/reference/grammar.html).
 - Most effort is spent on making code simple.
 
+## Tokenization
+```txt
+    -------------------------------------------------------------
+    | tokens       | regex                                      |
+    |-----------------------------------------------------------|
+    | comment      | #[^\n\r]*                                  |
+    | space        | [ \t]+                                     |
+    | number       | digits (. digits)?                         |
+    | identifier   | letter_(letter_|digit)*                    |
+    | operator     | >= | <= | ** | [-+*/()<>[\]{}]             |
+    | new_line     | [\n\r]                                     |
+    -------------------------------------------------------------
+```
 
-## run
+## Grammar
+
+- statement:
+    ```txt
+    compound_statement : statement*
+    statement : equality |
+                empty 
+    equality : expr (<=|>=|!=|=) expr
+    empty : new_line+
+    ```
+- expression grammar are ordered by priority level:
+    ```txt
+    expr: set_expr|vec_expr|add_expr
+    set_expr: { arglist }
+    vec_expr: [ arglist ]
+    add_expr: mul_expr ([+-] mul_expr)*
+    mul_expr: factor ([*/] factor)*
+    factor: [+-] factor | power
+    power: term [** factor] | factor
+    term: function | ( add_expr ) 
+    function: atom ( arglist? )    
+    arglist: expr (, expr)*    
+    ```
+
+## Run
 ```python
 $ python run.py 
 x = e - (3.14 + number) * matrix ** func(a, pi) # common math expression
