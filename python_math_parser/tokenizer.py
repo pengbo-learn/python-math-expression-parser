@@ -30,7 +30,7 @@ Preknowledge:
         | space        | [ \t]+                                     |
         | number       | digits (. digits)?                         |
         | identifier   | letter_(letter_|digit)*                    |
-        | operator     | >= | <= | ** | [-+*/()<>[\]{}]             |
+        | operator     | [><!]= | ** | [-+*/=<>()[\]{},]            |
         | new_line     | [\n\r]                                     |
         -------------------------------------------------------------
 
@@ -89,14 +89,13 @@ class Operator(Enum):
     right_paren = ')'
     right_square = ']'
     comma = ','
-    semicolon = ';'
 
 class Tokenizer(Enum):
     comment = r'#[^\r\n]*'
     space = r'[ \t]+'
     identifier = r'[a-zA-Z_][a-zA-Z_0-9]*'
     number = r'[0-9]+(?:\.[0-9]*)?'
-    operator = r'\*\*|[<>!]=|[-+*/=<>()[\]{},;]'
+    operator = r'\*\*|[<>!]=|[-+*/=<>()[\]{},]'
     new_line = r'[\r\n]'
     eof = r'$'
     error = r'(.+?)'

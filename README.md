@@ -33,7 +33,7 @@ A simple math expression parser written in python.
     | space        | [ \t]+                                     |
     | number       | digits (. digits)?                         |
     | identifier   | letter_(letter_|digit)*                    |
-    | operator     | >= | <= | ** | [-+*/()<>[\]{}]             |
+    | operator     | [><!]= | ** | [-+*/=<>()[\]{},]            |
     | new_line     | [\n\r]                                     |
     -------------------------------------------------------------
 ```
