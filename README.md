@@ -63,7 +63,7 @@ A simple math expression parser written in python.
     ```
 
 ## Run
-```python
+```bash
 $ python run.py 
 x = e - (3.14 + number) * matrix ** func(a, pi) # common math expression
 
