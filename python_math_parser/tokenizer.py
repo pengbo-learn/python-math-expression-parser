@@ -44,7 +44,6 @@ Tokenizer.token_iter is the main program.
 
 
 import re
-import pdb
 from enum import Enum
 
 class Token:
@@ -121,8 +120,6 @@ class Tokenizer(Enum):
             # raise error
             elif name == cls.error.name:
                 print(text[match.start():])
-                import pdb
-                pdb.set_trace()
                 raise Exception('Invalid Syntax.')
             value = match.group()
             # operator name
