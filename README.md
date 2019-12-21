@@ -130,7 +130,7 @@ Func("equal")(atom("s"), set(atom("3"), atom("9"), atom("m")))
 ```
 
 ## References
-- [Let's Build A Simple Interpreter](https://github.com/rspivak/lsbasi/blob/master/part17/spi.py)\
-- [Tokenizer for Python source](https://docs.python.org/3/library/tokenize.html)\
+- [Let's Build A Simple Interpreter](https://github.com/rspivak/lsbasi/blob/master/part17/spi.py)
+- [Tokenizer for Python source](https://docs.python.org/3/library/tokenize.html)
 - [Python's grammar](https://docs.python.org/3/reference/grammar.html)
 
